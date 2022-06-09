@@ -127,3 +127,16 @@ def Sbox(inputVal):
             [1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2],
             [7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8],
             [2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11] ] ]
+    numIter = int(len(inputVal)/6)
+    result= []
+    for i in range(0,numIter):
+        valSpec = inputVal[i*6:i*6+6]
+        rowIndex = int(valSpec[0] + valSpec[5], 2)
+        colIndex = int(valSpec[1:5],2)
+        result.append(S_box[i][rowIndex][colIndex])
+    print(f"Kết quả từ bảng S-box decimal{result}")
+    return "".join([ f"{x:04b}" for x in result])
+
+
+
+
